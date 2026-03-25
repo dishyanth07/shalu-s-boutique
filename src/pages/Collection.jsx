@@ -11,19 +11,54 @@ const Collection = () => {
   const [showFilters, setShowFilters] = useState(window.innerWidth > 1024)
   const [categories, setCategories] = useState([])
   
-  // Dynamic categories from database
+  // Consolidated data fetching to prevent double-spinning
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchData = async () => {
       try {
-        const { data, error } = await supabase.from('categories').select('*').order('name')
-        if (error) throw error
-        if (data) setCategories(data)
+        setLoading(true)
+        
+        // 1. Fetch Categories if not already loaded (fast)
+        let currentCategories = categories
+        if (categories.length === 0) {
+          const { data: catData, error: catError } = await supabase.from('categories').select('*').order('name')
+          if (!catError && catData) {
+            setCategories(catData)
+            currentCategories = catData
+          }
+        }
+
+        // Build map for current fetch
+        const currentCategoryMap = currentCategories.reduce((acc, cat) => {
+          acc[cat.slug] = cat.name
+          return acc
+        }, { 'best-sellers': "BEST SELLERS", 'pre-booking': "PRE-BOOKING" })
+
+        // 2. Fetch Products
+        let query = supabase.from('products').select(`*, product_variants(*)`)
+        
+        if (categoryId === 'best-sellers') {
+          query = query.eq('is_best_seller', true)
+        } else if (categoryId === 'pre-booking') {
+          query = query.eq('is_pre_booking', true)
+        } else if (categoryId && categoryId !== 'all') {
+          // Use mapping for robust filtering
+          const dbCategory = currentCategoryMap[categoryId] || categoryId.replace(/-/g, ' ').toUpperCase()
+          query = query.ilike('category', `%${dbCategory}%`)
+        }
+
+        const { data: prodData, error: prodError } = await query
+        if (prodError) throw prodError
+        
+        setProducts(prodData || [])
       } catch (error) {
-        console.error('Error fetching categories:', error)
+        console.error('Error fetching collection data:', error)
+      } finally {
+        setLoading(false)
       }
     }
-    fetchCategories()
-  }, [])
+
+    fetchData()
+  }, [categoryId]) // Only re-run when URL category changes
 
   const categoryMap = categories.reduce((acc, cat) => {
     acc[cat.slug] = cat.name
@@ -31,36 +66,6 @@ const Collection = () => {
   }, { 'best-sellers': "BEST SELLERS", 'pre-booking': "PRE-BOOKING" })
 
   const displayTitle = categoryMap[categoryId] || (categoryId ? categoryId.replace(/-/g, ' ').toUpperCase() : 'ALL COLLECTIONS')
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true)
-        let query = supabase.from('products').select(`*, product_variants(*)`)
-        
-        // Dynamic filtering based on URL category
-        if (categoryId === 'best-sellers') {
-          query = query.eq('is_best_seller', true)
-        } else if (categoryId === 'pre-booking') {
-          query = query.eq('is_pre_booking', true)
-        } else if (categoryId && categoryId !== 'all') {
-          // Use mapping for robust filtering
-          const dbCategory = categoryMap[categoryId] || categoryId.replace(/-/g, ' ').toUpperCase()
-          query = query.ilike('category', `%${dbCategory}%`)
-        }
-
-        const { data, error } = await query
-        if (error) throw error
-        setProducts(data || [])
-      } catch (error) {
-        console.error('Error fetching products:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchProducts()
-  }, [categoryId, categories]) // Add categories as dependency to re-run fetch when map is ready
 
   const allCollectionNames = [
     ...categories.map(c => c.name),

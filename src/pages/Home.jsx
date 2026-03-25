@@ -15,24 +15,19 @@ const Home = () => {
       try {
         setLoading(true)
         
-        // Fetch Products with Variants (Single efficient query)
-        const { data: productsData, error: productsError } = await supabase
-          .from('products')
-          .select('*, product_variants(*)')
-          .limit(8)
+        // Fetch Products and Featured Collections in parallel
+        const [
+          { data: productsData, error: productsError },
+          { data: featuredData, error: featuredError }
+        ] = await Promise.all([
+          supabase.from('products').select('*, product_variants(*)').limit(8),
+          supabase.from('featured_collections').select('*').order('sort_order', { ascending: true })
+        ])
         
         if (productsError) throw productsError;
-
-        setProducts(productsData || [])
-
-        // Fetch Featured Collections
-        const { data: featuredData, error: featuredError } = await supabase
-          .from('featured_collections')
-          .select('*')
-          .order('sort_order', { ascending: true })
-
         if (featuredError) throw featuredError;
 
+        setProducts(productsData || [])
         setFeatured(featuredData || [])
       } catch (error) {
         console.error('Error fetching home data:', error)
