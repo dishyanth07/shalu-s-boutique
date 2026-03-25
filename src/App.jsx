@@ -19,12 +19,10 @@ import AdminCategories from './pages/admin/AdminCategories'
 import AdminFeatured from './pages/admin/AdminFeatured'
 import MainLayout from './components/layout/MainLayout'
 
-import SupabaseDiagnostics from './SupabaseDiagnostics'
 
 function App() {
   return (
     <div className="min-h-screen bg-primary-light text-primary">
-      <SupabaseDiagnostics />
       <Toaster position="top-center" />
       <Routes>
         {/* Customer Routes */}
