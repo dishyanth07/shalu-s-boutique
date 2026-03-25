@@ -60,23 +60,23 @@ const Home = () => {
                 <div className="text-center animate-in fade-in slide-in-from-bottom-12 duration-1000">
                   <span className="text-[10px] md:text-sm uppercase tracking-[0.8em] font-bold mb-2 block drop-shadow-lg text-accent">ESTABLISHED 2024</span>
                   <span className="text-[9px] md:text-xs uppercase tracking-[0.4em] font-medium mb-4 block drop-shadow-md text-white/90">📍 Offline & Online showroom</span>
-                  <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-serif mb-6 tracking-tighter drop-shadow-2xl leading-none text-white">Shalu's</h1>
+                  <h1 className="text-5xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-serif mb-4 md:mb-6 tracking-tighter drop-shadow-2xl leading-none text-white">Shalu's</h1>
                   
                   <div className="max-w-2xl mx-auto mb-10">
-                    <p className="text-lg md:text-2xl font-serif italic mb-2 drop-shadow-lg text-[#efcc81]">"Elegance is the only beauty that never fades."</p>
-                    <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold drop-shadow-md opacity-80 text-white">— Audrey Hepburn</p>
+                    <p className="text-base sm:text-lg md:text-2xl font-serif italic mb-2 drop-shadow-lg text-[#efcc81]">&quot;Elegance is the only beauty that never fades.&quot;</p>
+                    <p className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold drop-shadow-md opacity-80 text-white">— Audrey Hepburn</p>
                   </div>
                   
                   <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
                     <Link 
                       to="/collections/all" 
-                      className="px-12 py-5 bg-accent text-primary text-[11px] font-bold uppercase tracking-widest hover:bg-white transition-all duration-500 shadow-2xl rounded-full"
+                      className="w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 bg-accent text-primary text-[11px] font-bold uppercase tracking-widest hover:bg-white transition-all duration-500 shadow-2xl rounded-full text-center"
                     >
                       Shop Collection
                     </Link>
                     <Link 
                       to="/contact" 
-                      className="px-12 py-5 bg-transparent border-2 border-accent text-accent text-[11px] font-bold uppercase tracking-widest hover:bg-accent hover:text-primary transition-all duration-500 backdrop-blur-sm rounded-full"
+                      className="w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 bg-transparent border-2 border-accent text-accent text-[11px] font-bold uppercase tracking-widest hover:bg-accent hover:text-primary transition-all duration-500 backdrop-blur-sm rounded-full text-center"
                     >
                       Book Appointment
                     </Link>
@@ -103,7 +103,7 @@ const Home = () => {
            <div className="flex flex-col items-center">
              <MessageCircle size={28} className="mb-4 text-primary" strokeWidth={1.5} />
              <h4 className="font-bold text-[#8666be] mb-2 font-serif tracking-wide text-lg">Support</h4>
-             <p className="text-sm font-light text-gray-500">WhatsApp: 8838693929 | 04142-216123</p>
+              <p className="text-xs sm:text-sm font-light text-gray-500 break-words">WhatsApp: 8838693929 | 04142-216123</p>
            </div>
          </div>
        </section>

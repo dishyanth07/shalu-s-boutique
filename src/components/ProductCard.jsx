@@ -57,10 +57,10 @@ const ProductCard = ({ product }) => {
       {/* Product Info */}
       <div className="flex flex-col items-start px-1">
         <h3 className="text-sm font-bold text-primary mb-1 uppercase tracking-widest line-clamp-1">{product.name}</h3>
-        <div className="flex items-center gap-2">
-          <span className="text-[13px] font-medium text-[#8666be]">Rs. {currentPrice.toLocaleString()}.00</span>
+        <div className="flex items-center gap-x-2 gap-y-1 flex-wrap">
+          <span className="text-[12px] sm:text-[13px] font-bold text-[#8666be]">Rs. {currentPrice.toLocaleString()}.00</span>
           {originalPrice > 0 && (
-            <span className="text-[11px] text-gray-500 line-through">Rs. {originalPrice.toLocaleString()}.00</span>
+            <span className="text-[10px] sm:text-[11px] text-gray-500 line-through opacity-70">Rs. {originalPrice.toLocaleString()}.00</span>
           )}
         </div>
       </div>

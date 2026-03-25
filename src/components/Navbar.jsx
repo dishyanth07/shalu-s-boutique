@@ -176,8 +176,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Top Announcement Bar */}
-      <div className="w-full bg-[#c8b6ff] text-primary text-[10px] sm:text-xs font-bold py-2 px-4 text-center uppercase tracking-widest z-50 relative">
+      <div className="w-full bg-[#c8b6ff] text-primary text-[9px] sm:text-xs font-bold py-2 px-4 text-center uppercase tracking-widest z-50 relative overflow-hidden whitespace-nowrap text-ellipsis">
         WhatsApp: 8838693929 | ☎️ 04142-216123
       </div>
 

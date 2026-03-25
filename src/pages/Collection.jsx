@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ChevronDown, SlidersHorizontal, Grid3x3, LayoutGrid } from 'lucide-react'
+import { ChevronDown, SlidersHorizontal, Grid3x3, LayoutGrid, X } from 'lucide-react'
 import ProductCard from '../components/ProductCard'
 import { supabase } from '../lib/supabase'
 
@@ -8,7 +8,7 @@ const Collection = () => {
   const { categoryId } = useParams() // e.g., 'best-sellers', 'pre-booking', 'all'
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [showFilters, setShowFilters] = useState(true)
+  const [showFilters, setShowFilters] = useState(window.innerWidth > 1024)
   const [categories, setCategories] = useState([])
   
   // Dynamic categories from database
@@ -99,9 +99,29 @@ const Collection = () => {
       {/* Main Layout Area */}
       <div className="max-w-[1500px] mx-auto px-4 sm:px-8 py-8 flex items-start gap-12 relative">
         
-        {/* Left Sidebar */}
-        <div className={`transition-all duration-300 overflow-hidden flex-shrink-0 ${showFilters ? 'w-[240px] opacity-100' : 'w-0 opacity-0'}`}>
-          <div className="w-[240px] pr-8 sticky top-28">
+        {/* Filter Overlay (Mobile only) */}
+        {showFilters && (
+          <div 
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] lg:hidden"
+            onClick={() => setShowFilters(false)}
+          />
+        )}
+
+        {/* Left Sidebar / Mobile Drawer */}
+        <div className={`
+          fixed lg:sticky top-0 lg:top-28 left-0 h-full lg:h-auto z-[100] lg:z-0
+          w-[300px] lg:w-[240px] bg-white lg:bg-transparent
+          transform transition-all duration-300 ease-in-out
+          ${showFilters ? 'translate-x-0 opacity-100' : '-translate-x-full lg:opacity-0 lg:w-0'}
+          p-6 lg:p-0 lg:pr-8 border-r lg:border-r-0 border-gray-100 lg:border-transparent
+          overflow-y-auto lg:overflow-visible
+        `}>
+          <div className="flex items-center justify-between lg:hidden mb-8 pb-4 border-b border-gray-100">
+            <span className="font-bold text-sm uppercase tracking-widest text-primary">Filters</span>
+            <button onClick={() => setShowFilters(false)} className="p-2 -mr-2 text-gray-400 hover:text-primary transition-colors">
+              <X size={20} />
+            </button>
+          </div>
             
             {/* All collections */}
             <div className="mb-8">
@@ -162,8 +182,8 @@ const Collection = () => {
           </div>
         </div>
 
-        {/* Product Grid */}
-        <div className="flex-1 transition-all duration-300 w-full min-h-[50vh]">
+        {/* Product Grid Area */}
+        <div className="flex-1 w-full min-h-[50vh]">
           {loading ? (
              <div className="flex justify-center items-center h-full py-20">
                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
@@ -182,7 +202,6 @@ const Collection = () => {
              </div>
           )}
         </div>
-
       </div>
     </div>
   )
