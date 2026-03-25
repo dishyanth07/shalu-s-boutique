@@ -19,9 +19,11 @@ const Contact = () => {
       <div className="w-full max-w-2xl mx-auto px-4 py-20 text-center">
         <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-primary mb-8">Shalu's Boutique</h1>
         
-        <p className="text-sm font-semibold text-primary mb-2">WhatsApp number +91 7305217056</p>
+        <p className="text-sm font-bold text-primary mb-2">📍 Offline & Online showroom</p>
+        <p className="text-sm font-semibold text-primary mb-2">WhatsApp: 8838693929 | ☎️ 04142-216123</p>
         <p className="text-sm font-medium text-gray-500 mb-20 max-w-sm mx-auto leading-relaxed">
-          Kindly message us on WhatsApp for product or order details, or email us at shaluboutique@gmail.com.
+          Kindly message us on WhatsApp for product or order details, or email us at shaluboutique@gmail.com. 
+          <br/>🚚 Cash on Delivery available | 🌏 Shipping Worldwide
         </p>
 
         <div className="w-full mt-10">
@@ -59,13 +61,13 @@ const Contact = () => {
           </div>
           <div className="flex flex-col items-center">
             <Truck size={28} className="mb-4 text-primary" strokeWidth={1.5} />
-            <h4 className="font-bold text-primary mb-2 text-sm tracking-wide">Pan India Shipping</h4>
-            <p className="text-xs font-medium text-gray-600">Ship anywhere in India, rates available at checkout.</p>
+            <h4 className="font-bold text-primary mb-2 text-sm tracking-wide">Worldwide Shipping</h4>
+            <p className="text-xs font-medium text-gray-600">Shipping available worldwide 🌏</p>
           </div>
           <div className="flex flex-col items-center">
             <MessageCircle size={28} className="mb-4 text-primary" strokeWidth={1.5} />
-            <h4 className="font-bold text-primary mb-2 text-sm tracking-wide">24/7 support</h4>
-            <p className="text-xs font-medium text-gray-600">Whatsapp us anytime at +91 7305217056</p>
+            <h4 className="font-bold text-primary mb-2 text-sm tracking-wide">Support</h4>
+            <p className="text-xs font-medium text-gray-600">WhatsApp: 8838693929 | ☎️ 04142-216123</p>
           </div>
         </div>
       </div>
@@ -102,7 +104,7 @@ const Contact = () => {
              <h4 className="font-bold text-xs uppercase tracking-wider mb-2">Contact us</h4>
              <p className="text-xs">Shalu's Boutique</p>
              <p className="text-xs underline cursor-pointer pointer-events-none">shaluboutique@gmail.com</p>
-             <p className="text-xs underline">+91 7305217056</p>
+             <p className="text-xs underline">WhatsApp: 8838693929 | 04142-216123</p>
            </div>
         </div>
         <div className="max-w-[1200px] mx-auto px-8 mt-16 flex justify-between items-center border-t border-primary/10 pt-8">

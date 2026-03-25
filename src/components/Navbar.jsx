@@ -178,7 +178,7 @@ const Navbar = () => {
 
       {/* Top Announcement Bar */}
       <div className="w-full bg-[#c8b6ff] text-primary text-[10px] sm:text-xs font-bold py-2 px-4 text-center uppercase tracking-widest z-50 relative">
-        BOUTIQUE ADDRESS: I K TOWER, 222/161 MPM STREET, PERAMBUR, CHENNAI - 39
+        WhatsApp: 8838693929 | ☎️ 04142-216123
       </div>
 
       {/* Main Navbar */}

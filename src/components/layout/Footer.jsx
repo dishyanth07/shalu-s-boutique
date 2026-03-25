@@ -12,7 +12,13 @@ const Footer = () => {
           <Link to="/track" className="hover:text-accent">Tracking</Link>
           <Link to="/admin/login" className="hover:text-accent">Admin</Link>
         </div>
+        <div className="mb-8 text-sm text-primary-light/80 space-y-1">
+          <p>📍 Offline & Online showroom</p>
+          <p>📞 04142-216123 | WhatsApp: 8838693929</p>
+          <p>🚚 Cash on Delivery available | 🌏 Shipping Worldwide</p>
+        </div>
         <p className="text-xs text-primary-light/40">© 2026 Shalu's Boutique & Wardrobe. All rights reserved.</p>
+
       </div>
     </footer>
   )

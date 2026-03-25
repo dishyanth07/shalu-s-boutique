@@ -15,26 +15,15 @@ const Home = () => {
       try {
         setLoading(true)
         
-        // Fetch Products (Simplified for speed)
+        // Fetch Products with Variants (Single efficient query)
         const { data: productsData, error: productsError } = await supabase
           .from('products')
-          .select('*')
+          .select('*, product_variants(*)')
           .limit(8)
         
         if (productsError) throw productsError;
 
-        // Fetch variants separately if needed, or just proceed
-        const { data: variantsData } = await supabase
-          .from('product_variants')
-          .select('*')
-        
-        // Map variants to products manually for extra stability
-        const productsWithVariants = (productsData || []).map(p => ({
-          ...p,
-          product_variants: (variantsData || []).filter(v => v.product_id === p.id)
-        }))
-
-        setProducts(productsWithVariants)
+        setProducts(productsData || [])
 
         // Fetch Featured Collections
         const { data: featuredData, error: featuredError } = await supabase
@@ -44,7 +33,6 @@ const Home = () => {
 
         if (featuredError) throw featuredError;
 
-        setProducts(productsData || [])
         setFeatured(featuredData || [])
       } catch (error) {
         console.error('Error fetching home data:', error)
@@ -55,6 +43,7 @@ const Home = () => {
     }
 
     fetchHomeData()
+
   }, [])
 
   return (
@@ -69,7 +58,8 @@ const Home = () => {
               {/* Vibrant Overlay with Quote */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-gradient-to-t from-black/60 via-primary/5 to-black/10 px-6 backdrop-blur-[1px]">
                 <div className="text-center animate-in fade-in slide-in-from-bottom-12 duration-1000">
-                  <span className="text-[10px] md:text-sm uppercase tracking-[0.8em] font-bold mb-4 block drop-shadow-lg text-accent">ESTABLISHED 2024</span>
+                  <span className="text-[10px] md:text-sm uppercase tracking-[0.8em] font-bold mb-2 block drop-shadow-lg text-accent">ESTABLISHED 2024</span>
+                  <span className="text-[9px] md:text-xs uppercase tracking-[0.4em] font-medium mb-4 block drop-shadow-md text-white/90">📍 Offline & Online showroom</span>
                   <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-serif mb-6 tracking-tighter drop-shadow-2xl leading-none text-white">Shalu's</h1>
                   
                   <div className="max-w-2xl mx-auto mb-10">
@@ -107,13 +97,13 @@ const Home = () => {
            </div>
            <div className="flex flex-col items-center">
              <Truck size={28} className="mb-4 text-primary" strokeWidth={1.5} />
-             <h4 className="font-bold text-[#8666be] mb-2 font-serif tracking-wide text-lg">Pan India Shipping</h4>
-             <p className="text-sm font-light text-gray-500">Ship anywhere in India, rates available at checkout.</p>
+             <h4 className="font-bold text-[#8666be] mb-2 font-serif tracking-wide text-lg">Worldwide Shipping</h4>
+             <p className="text-sm font-light text-gray-500">Shipping available worldwide 🌏</p>
            </div>
            <div className="flex flex-col items-center">
              <MessageCircle size={28} className="mb-4 text-primary" strokeWidth={1.5} />
-             <h4 className="font-bold text-[#8666be] mb-2 font-serif tracking-wide text-lg">24/7 support</h4>
-             <p className="text-sm font-light text-gray-500">Whatsapp us anytime at +91 7305217056</p>
+             <h4 className="font-bold text-[#8666be] mb-2 font-serif tracking-wide text-lg">Support</h4>
+             <p className="text-sm font-light text-gray-500">WhatsApp: 8838693929 | 04142-216123</p>
            </div>
          </div>
        </section>
