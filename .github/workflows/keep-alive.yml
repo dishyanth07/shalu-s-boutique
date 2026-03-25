@@ -1,0 +1,21 @@
+name: Keep Supabase Alive
+
+on:
+  schedule:
+    # Runs every 15 minutes to prevent the Supabase Free Tier database from sleeping
+    - cron: '*/15 * * * *'
+  # Allow running the script manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto-ping Supabase REST API
+        run: |
+          echo "Pinging Supabase Database to keep it awake..."
+          curl -s -X GET "https://jrbaskxshuvjsmfdbfkp.supabase.co/rest/v1/categories?select=id&limit=1" \
+            -H "apikey: sb_publishable_D5RWNBKpgxoJBO3q4mPIdA_8NMj-klh" \
+            -H "Authorization: Bearer sb_publishable_D5RWNBKpgxoJBO3q4mPIdA_8NMj-klh"
+          echo ""
+          echo "Ping successful! Database is active."
