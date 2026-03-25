@@ -8,7 +8,7 @@ const Collection = () => {
   const { categoryId } = useParams() // e.g., 'best-sellers', 'pre-booking', 'all'
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [showFilters, setShowFilters] = useState(window.innerWidth > 1024)
+  const [showFilters, setShowFilters] = useState(false)
   const [categories, setCategories] = useState([])
   
   // Dynamic categories from database
@@ -97,7 +97,7 @@ const Collection = () => {
       </div>
 
       {/* Main Layout Area */}
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-8 py-8 flex items-start gap-12 relative">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-8 py-8 flex items-start gap-12 relative overflow-x-hidden">
         
         {/* Filter Overlay (Mobile only) */}
         {showFilters && (
@@ -107,14 +107,14 @@ const Collection = () => {
           />
         )}
 
-        {/* Left Sidebar / Mobile Drawer */}
+        {/* Left Sidebar / Mobile Drawer - always a fixed overlay drawer */}
         <div className={`
-          fixed lg:sticky top-0 lg:top-28 left-0 h-full lg:h-auto z-[100] lg:z-0
-          w-[300px] lg:w-[240px] bg-white lg:bg-transparent
+          fixed top-0 left-0 h-full z-[100]
+          w-[300px] bg-white
           transform transition-all duration-300 ease-in-out
-          ${showFilters ? 'translate-x-0 opacity-100' : '-translate-x-full lg:opacity-0 lg:w-0'}
-          p-6 lg:p-0 lg:pr-8 border-r lg:border-r-0 border-gray-100 lg:border-transparent
-          overflow-y-auto lg:overflow-visible
+          ${showFilters ? 'translate-x-0' : '-translate-x-full'}
+          p-6 border-r border-gray-100
+          overflow-y-auto shadow-xl
         `}>
           <div className="flex items-center justify-between lg:hidden mb-8 pb-4 border-b border-gray-100">
             <span className="font-bold text-sm uppercase tracking-widest text-primary">Filters</span>
@@ -182,15 +182,14 @@ const Collection = () => {
           </div>
         </div>
 
-        {/* Product Grid Area */}
-        <div className="flex-1 w-full min-h-[50vh]">
+        {/* Product Grid Area - always full width since filter is a fixed overlay */}
+        <div className="w-full min-h-[50vh]">
           {loading ? (
              <div className="flex justify-center items-center h-full py-20">
                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
              </div>
           ) : products.length > 0 ? (
-             // Responsive grid changes based on sidebar visibility
-             <div className={`grid grid-cols-2 md:grid-cols-3 ${!showFilters ? 'lg:grid-cols-5' : 'lg:grid-cols-4'} gap-4 md:gap-x-6 md:gap-y-10 w-full`}>
+             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-x-6 md:gap-y-10 w-full">
                {products.map(product => (
                  <ProductCard key={product.id} product={product} />
                ))}
