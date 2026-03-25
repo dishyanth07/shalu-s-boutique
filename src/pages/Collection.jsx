@@ -180,7 +180,6 @@ const Collection = () => {
             </div>
 
           </div>
-        </div>
 
         {/* Product Grid Area */}
         <div className="flex-1 w-full min-h-[50vh]">
@@ -189,7 +188,6 @@ const Collection = () => {
                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
              </div>
           ) : products.length > 0 ? (
-             // Responsive grid changes based on sidebar visibility
              <div className={`grid grid-cols-2 md:grid-cols-3 ${!showFilters ? 'lg:grid-cols-5' : 'lg:grid-cols-4'} gap-4 md:gap-x-6 md:gap-y-10 w-full`}>
                {products.map(product => (
                  <ProductCard key={product.id} product={product} />
