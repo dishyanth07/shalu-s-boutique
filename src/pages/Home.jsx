@@ -194,27 +194,6 @@ const Home = () => {
           </div>
        </section>
 
-       {/* COLLECTION LIST */}
-       <section className="py-16 md:py-24 bg-white">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-xl md:text-2xl font-bold tracking-[0.15em] uppercase text-primary">COLLECTION LIST</h2>
-          </div>
-          <div className="max-w-[1400px] mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-             {[
-               {title: "JEWELLERY", img: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=600"},
-               {title: "Feature Collections", img: "https://images.unsplash.com/photo-1583391733958-d2597280170a?q=80&w=600"},
-               {title: "CLEARANCE SALE", img: "https://images.unsplash.com/photo-1610189013229-87c10b2f56b2?q=80&w=600"},
-             ].map((col, i) => (
-               <Link to={`/collections/${col.title.toLowerCase().replace(/ /g, '-')}`} key={i} className="relative aspect-[3/4] md:aspect-[4/5] overflow-hidden group block rounded-sm">
-                 <img src={col.img} className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110" alt={col.title} />
-                 {/* No heavy gradient in collection list to match reference image 4, just text overlay */}
-                 <div className="absolute inset-0 bg-transparent flex items-center justify-center pointer-events-none">
-                   <h3 className="text-white text-lg sm:text-xl md:text-2xl font-medium tracking-widest uppercase drop-shadow-lg z-10 transition-transform duration-500 group-hover:scale-105">{col.title}</h3>
-                 </div>
-               </Link>
-             ))}
-          </div>
-       </section>
     </div>
   )
 }
