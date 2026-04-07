@@ -27,7 +27,7 @@ const Checkout = () => {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
       amount: totalPrice * 100, // in paise
       currency: "INR",
-      name: "Shalu's Boutique",
+      name: "Unique Boutique",
       description: "Purchase payment",
       handler: async function (response) {
         // Update order status to confirmed or similar on success

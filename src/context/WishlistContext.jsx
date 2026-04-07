@@ -10,7 +10,7 @@ export const WishlistProvider = ({ children }) => {
 
   // Load from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem('shalu_wishlist');
+    const saved = localStorage.getItem('unique_wishlist');
     if (saved) {
       try {
         setWishlist(JSON.parse(saved));
@@ -22,7 +22,7 @@ export const WishlistProvider = ({ children }) => {
 
   // Save to localStorage when wishlist changes
   useEffect(() => {
-    localStorage.setItem('shalu_wishlist', JSON.stringify(wishlist));
+    localStorage.setItem('unique_wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
 
   const toggleWishlist = (product) => {

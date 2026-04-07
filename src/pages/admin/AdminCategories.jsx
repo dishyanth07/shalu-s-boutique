@@ -175,7 +175,7 @@ const AdminCategories = () => {
                     required 
                     value={formData.name} 
                     onChange={e => setFormData({...formData, name: e.target.value})}
-                    placeholder="e.g. SHALU'S SAREE"
+                    placeholder="e.g. UNIQUE SAREE"
                     className="w-full px-6 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:border-primary transition-all outline-none text-sm"
                   />
                 </div>
@@ -185,7 +185,7 @@ const AdminCategories = () => {
                     type="text" 
                     value={formData.slug} 
                     onChange={e => setFormData({...formData, slug: e.target.value})}
-                    placeholder="e.g. shalus-saree"
+                    placeholder="e.g. unique-saree"
                     className="w-full px-6 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:border-primary transition-all outline-none text-sm"
                   />
                 </div>

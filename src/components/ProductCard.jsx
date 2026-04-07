@@ -46,7 +46,7 @@ const ProductCard = ({ product }) => {
         )}
 
         <img
-          src={defaultVariant.image_url || 'https://via.placeholder.com/400x500?text=Shalu+Boutique'}
+          src={defaultVariant.image_url || 'https://via.placeholder.com/400x500?text=Unique+Boutique'}
           alt={product.name}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

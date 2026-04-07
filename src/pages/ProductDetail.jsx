@@ -80,7 +80,7 @@ const ProductDetail = () => {
           <div className="space-y-4">
             <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white shadow-sm">
               <img 
-                src={selectedVariant?.image_url || 'https://via.placeholder.com/800x1000?text=Shalu+Boutique'} 
+                src={selectedVariant?.image_url || 'https://via.placeholder.com/800x1000?text=Unique+Boutique'} 
                 alt={product.name}
                 className="w-full h-full object-cover"
               />

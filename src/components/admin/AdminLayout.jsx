@@ -30,7 +30,7 @@ const AdminLayout = ({ children }) => {
       {/* Sidebar - Desktop */}
       <aside className="hidden md:flex flex-col w-64 bg-white border-r border-gray-100 h-screen sticky top-0">
         <div className="p-8 flex flex-col items-start">
-          <span className="text-xl font-serif text-[#b89542] leading-none mb-1">Shalu's</span>
+          <span className="text-xl font-serif text-[#b89542] leading-none mb-1">Unique</span>
           <span className="text-[10px] uppercase tracking-[0.2em] text-[#b89542] leading-none">BOUTIQUE ADMIN</span>
         </div>
         
@@ -70,7 +70,7 @@ const AdminLayout = ({ children }) => {
 
       {/* Mobile Nav */}
       <div className="md:hidden bg-primary p-4 flex justify-between items-center sticky top-0 z-50">
-        <h1 className="text-lg font-serif text-accent italic">Shalu Admin</h1>
+        <h1 className="text-lg font-serif text-accent italic">Unique Admin</h1>
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white p-2">
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

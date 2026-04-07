@@ -29,7 +29,7 @@ const AdminLogin = () => {
       <div className="max-w-md w-full">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-serif text-white mb-2">Admin Portal</h1>
-          <p className="text-primary-light/50 uppercase tracking-widest text-xs font-bold">Shalu's Boutique & Wardrobe</p>
+          <p className="text-primary-light/50 uppercase tracking-widest text-xs font-bold">Unique Boutique</p>
         </div>
 
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
@@ -47,7 +47,7 @@ const AdminLogin = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-12 pr-6 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:border-accent focus:ring-0 transition-all font-medium"
-                  placeholder="admin@shalusboutique.com"
+                  placeholder="admin@uniqueboutique.com"
                 />
               </div>
             </div>

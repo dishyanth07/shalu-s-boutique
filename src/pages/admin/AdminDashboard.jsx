@@ -43,7 +43,7 @@ const AdminDashboard = () => {
     <AdminLayout>
       <header className="mb-12">
         <h2 className="text-3xl font-serif text-primary">System Overview</h2>
-        <p className="text-gray-400 font-light mt-1">Here's how Shalu's Boutique is performing today.</p>
+        <p className="text-gray-400 font-light mt-1">Here's how Unique Boutique is performing today.</p>
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

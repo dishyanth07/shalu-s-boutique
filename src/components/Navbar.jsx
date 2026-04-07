@@ -139,7 +139,7 @@ const Navbar = () => {
         <div className={`fixed inset-y-0 left-0 w-4/5 max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="flex items-center justify-between p-6 border-b border-gray-100">
             <div className="flex flex-col">
-              <span className="text-xl font-serif text-[#b89542]">Shalu's</span>
+              <span className="text-xl font-serif text-[#b89542]">Unique</span>
               <span className="text-[10px] uppercase tracking-[0.2em] text-[#b89542]">BOUTIQUE</span>
             </div>
             <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-gray-400 hover:text-primary transition-colors">
@@ -158,7 +158,7 @@ const Navbar = () => {
                   onClick={() => setMobileMenuOpen(false)} 
                   className="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-[#b89542]"
                 >
-                  {cat.name.replace("SHALU'S ", "")}
+                  {cat.name.replace("UNIQUE ", "")}
                 </Link>
               ))}
             </div>
@@ -177,7 +177,7 @@ const Navbar = () => {
       </div>
 
       <div className="w-full bg-[#c8b6ff] text-primary text-[9px] sm:text-xs font-bold py-2 px-4 text-center uppercase tracking-widest z-50 relative overflow-hidden whitespace-nowrap text-ellipsis">
-        WhatsApp: 8838693929 | ☎️ 04142-216123
+        WhatsApp: 9092330688
       </div>
 
       {/* Main Navbar */}
@@ -192,7 +192,7 @@ const Navbar = () => {
               </button>
               
               <Link to="/" className="flex flex-col items-start sm:items-center">
-                <span className="text-2xl sm:text-3xl font-serif text-[#b89542] leading-none mb-1">Shalu's</span>
+                <span className="text-2xl sm:text-3xl font-serif text-[#b89542] leading-none mb-1">Unique</span>
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-medium text-[#b89542] leading-none ml-1 sm:ml-0">BOUTIQUE</span>
               </Link>
             </div>
